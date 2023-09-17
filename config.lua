@@ -8,6 +8,9 @@ Config.RemoveItem = false -- Remove Item after using it
 
 Config.UseAnProgbar = false -- Set it to true if you use Progressbar "an_progbar". 
 --You can change the Progressbar in the client.lua, if needed
+Config.ProgressBar = function()
+    exports['an_progBar']:run((Config.Time/1000),'Taking Clothes on...','#00d5ff') 
+end
 
 Config.Animation = { -- Animation the Player does after using item
     dict = 'clothingshirt',
