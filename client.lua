@@ -30,10 +30,7 @@ AddEventHandler("phoenix:sendclothes", function(itemb)
     for k, v in pairs(Config.Items) do 
         if v.itemname == itemb then
             if ESX.PlayerData.job and ESX.PlayerData.job.name == v.job  or v.job == nil then 
-                if Config.UseAnProgbar then
-                    exports['an_progBar']:run((Config.Time/1000),'Taking Clothes on...','#00d5ff') 
-                    -- you can replace this with your custom Progressbar
-                end
+            	Config.ProgressBar()
                 RequestAnimDict(Config.Animation.dict)
                 while not HasAnimDictLoaded(Config.Animation.dict) do 
                     Citizen.Wait(25)
