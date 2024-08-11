@@ -8,13 +8,20 @@ else
 	end)
 end
 
+local inuse = false
 for _,item in pairs(Config.Items) do
 	ESX.RegisterUsableItem(item.itemname, function(source)
 		local xPlayer = ESX.GetPlayerFromId(source)
 		local itemb = item.itemname
-		TriggerClientEvent("phoenix:sendclothes", source, itemb)
-		if Config.RemoveItem then 
-			xPlayer.removeInventoryItem(itemb, 1)
+		if not inuse then
+			inuse = true
+			TriggerClientEvent("phoenix:sendclothes", source, itemb)
+			if Config.RemoveItem then 
+				xPlayer.removeInventoryItem(itemb, 1)
+			end
+		else 
+			TriggerClientEvent("phoenix:resetclothes", source)
+			inuse = false
 		end
 	end)
 end
