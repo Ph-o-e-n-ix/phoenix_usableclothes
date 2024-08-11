@@ -12,6 +12,13 @@ else
     end)
 end
 
+RegisterNetEvent("phoenix:resetclothes")
+AddEventHandler("phoenix:resetclothes", function()
+    TriggerEvent('skinchanger:getSkin', function(skin)
+        TriggerEvent('skinchanger:loadSkin', skin)
+    end)
+end)
+
 RegisterNetEvent('esx:setJob')
 AddEventHandler('esx:setJob', function(job)
 	ESX.PlayerData.job = job
